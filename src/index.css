@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Overseas Manpower & Tourism Platform Design System
+   Inspired by Espanova gradient branding
+   Colors: Purple gradient → Gold accents → Clean neutrals
+*/
+
+@layer base {
+  :root {
+    /* Core Brand Colors - HSL Format */
+    --primary: 276 47% 34%;           /* #5B2C98 - Deep Purple */
+    --primary-mid: 308 49% 41%;       /* #A23DB7 - Magenta */  
+    --primary-light: 334 72% 59%;     /* #E84393 - Pink */
+    --primary-foreground: 0 0% 100%;  /* White text on primary */
+
+    /* Gold Accent */
+    --accent: 41 85% 62%;             /* #F5B041 - Warm Gold */
+    --accent-foreground: 0 0% 0%;     /* Black text on gold */
+
+    /* Neutral Palette */
+    --background: 0 0% 100%;          /* #FFFFFF - Pure White */
+    --foreground: 0 0% 17%;           /* #2C2C2C - Charcoal */
+    --muted: 0 0% 96%;                /* #F4F4F4 - Light Gray */
+    --muted-foreground: 0 0% 45%;     /* Gray text */
+
+    /* UI Elements */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 17%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 17%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 17%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 276 47% 34%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Corporate Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(276 47% 34%), hsl(308 49% 41%), hsl(334 72% 59%));
+    --gradient-hero: linear-gradient(135deg, hsl(276 47% 34% / 0.95), hsl(308 49% 41% / 0.9));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 98%));
+    
+    /* Shadows & Effects */
+    --shadow-soft: 0 2px 20px hsl(276 47% 34% / 0.08);
+    --shadow-medium: 0 8px 30px hsl(276 47% 34% / 0.12);
+    --shadow-strong: 0 20px 60px hsl(276 47% 34% / 0.15);
+    --glow-primary: 0 0 40px hsl(276 47% 34% / 0.3);
+    --glow-gold: 0 0 30px hsl(41 85% 62% / 0.4);
+
+    /* Border Radius System */
+    --radius: 0.75rem;
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+
+    /* Animation Easing */
+    --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode uses same brand colors but adjusted backgrounds */
+    --background: 0 0% 8%;            /* Dark charcoal */
+    --foreground: 0 0% 95%;           /* Light text */
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    /* Keep same brand gradients in dark mode */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* Typography Scale - Poppins for headings, Open Sans for body */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-semibold;
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold;
+    line-height: 1.15;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl font-medium;
+    line-height: 1.2;
+  }
+
+  p {
+    @apply text-base md:text-lg leading-relaxed;
+  }
+
+  small {
+    @apply text-sm leading-normal;
+  }
+}
+
+@layer components {
+  /* Gradient Text - Espanova Style */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Hero Button Variants */
+  .btn-hero {
+    @apply px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .btn-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-strong);
+    filter: brightness(1.1);
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300;
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    border: none;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glow-gold);
+  }
+
+  .btn-ghost {
+    @apply px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300;
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Card Styles */
+  .card-corporate {
+    @apply bg-white rounded-2xl p-6 transition-all duration-300;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-soft);
+    border: 1px solid hsl(var(--border));
+  }
+
+  .card-corporate:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-medium);
+    border-image: var(--gradient-primary) 1;
+  }
+
+  /* Service Card Hover Effect */
+  .service-card {
+    @apply relative overflow-hidden bg-white rounded-2xl p-8 transition-all duration-500 cursor-pointer;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .service-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: var(--gradient-primary);
+  }
+
+  .service-card:hover::before {
+    @apply opacity-5;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-strong);
+  }
+
+  /* Country Flag Cards */
+  .country-card {
+    @apply relative bg-white rounded-xl p-6 text-center transition-all duration-300 cursor-pointer;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .country-card:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-medium);
+  }
+
+  /* Animation Classes */
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700;
+  }
+
+  .fade-in-up.animate {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .slide-in-left {
+    @apply opacity-0 -translate-x-8 transition-all duration-700;
+  }
+
+  .slide-in-left.animate {
+    @apply opacity-100 translate-x-0;
+  }
+
+  /* Glassmorphism Effect */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* Carousel/Slider Styles */
+  .carousel-track {
+    @apply flex transition-transform duration-500 ease-in-out;
+  }
+
+  /* WhatsApp Floating Button */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg z-50 transition-all duration-300;
+  }
+
+  .whatsapp-float:hover {
+    @apply bg-green-600 scale-110;
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+  }
+}
