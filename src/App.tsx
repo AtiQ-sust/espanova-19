@@ -12,6 +12,12 @@ import HajjUmrah from "./pages/HajjUmrah";
 import SaudiTourism from "./pages/SaudiTourism";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import ManpowerExport from "./pages/ManpowerExport";
+import Training from "./pages/Training";
+import Blog from "./pages/Blog";
+import Guides from "./pages/Guides";
+import News from "./pages/News";
+import Success from "./pages/Success";
 
 const queryClient = new QueryClient();
 
@@ -25,11 +31,17 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/manpower" element={<ManpowerExport />} />
           <Route path="/services/hajj-umrah" element={<HajjUmrah />} />
           <Route path="/services/saudi-tourism" element={<SaudiTourism />} />
+          <Route path="/services/training" element={<Training />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/apply" element={<JobApply />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/resources/guides" element={<Guides />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/success" element={<Success />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
