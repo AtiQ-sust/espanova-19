@@ -18,6 +18,9 @@ import Blog from "./pages/Blog";
 import Guides from "./pages/Guides";
 import News from "./pages/News";
 import Success from "./pages/Success";
+import Candidates from "./pages/Candidates";
+import VisaTicketing from "./pages/VisaTicketing";
+import HolidayPackages from "./pages/HolidayPackages";
 
 const queryClient = new QueryClient();
 
@@ -35,8 +38,11 @@ const App = () => (
           <Route path="/services/hajj-umrah" element={<HajjUmrah />} />
           <Route path="/services/saudi-tourism" element={<SaudiTourism />} />
           <Route path="/services/training" element={<Training />} />
+          <Route path="/services/visa-ticketing" element={<VisaTicketing />} />
+          <Route path="/services/holiday-packages" element={<HolidayPackages />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/jobs/apply" element={<JobApply />} />
+          <Route path="/candidates" element={<Candidates />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/resources/guides" element={<Guides />} />
