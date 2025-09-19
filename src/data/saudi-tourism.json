@@ -1,0 +1,240 @@
+{
+  "experiences": [
+    {
+      "slug": "al-ula-wonders",
+      "title": "Al-Ula Wonders",
+      "tagline": "Ancient sandstone marvels & luxury desert stays",
+      "hero_image": "/assets/experiences/al-ula-hero.jpg",
+      "gallery": [
+        "/assets/experiences/al-ula-1.jpg",
+        "/assets/experiences/al-ula-2.jpg",
+        "/assets/experiences/al-ula-3.jpg"
+      ],
+      "highlights": [
+        "UNESCO heritage at Hegra",
+        "Elephant Rock sunset view",
+        "Luxury desert camp"
+      ],
+      "duration_hint": "2–3 days",
+      "best_season": "Oct–Apr",
+      "cta_label": "Add to My Tour Plan",
+      "bundle_hint": "Pairs beautifully with Umrah & Riyadh Season"
+    },
+    {
+      "slug": "red-sea-escape",
+      "title": "Red Sea Escape",
+      "tagline": "Crystal waters, island resorts & marine adventures",
+      "hero_image": "/assets/experiences/red-sea-hero.jpg",
+      "gallery": [
+        "/assets/experiences/red-sea-1.jpg",
+        "/assets/experiences/red-sea-2.jpg",
+        "/assets/experiences/red-sea-3.jpg"
+      ],
+      "highlights": [
+        "Beachfront stays",
+        "Snorkeling & diving",
+        "Private boat tours"
+      ],
+      "duration_hint": "2–3 days",
+      "best_season": "Year-round",
+      "cta_label": "Add to My Tour Plan",
+      "bundle_hint": "Great leisure add-on after Umrah"
+    },
+    {
+      "slug": "riyadh-season",
+      "title": "Riyadh Season",
+      "tagline": "Festivals, concerts, mega-events & shopping",
+      "hero_image": "/assets/experiences/riyadh-season-hero.jpg",
+      "gallery": [
+        "/assets/experiences/riyadh-1.jpg",
+        "/assets/experiences/riyadh-2.jpg"
+      ],
+      "highlights": [
+        "Live shows & parades",
+        "Theme zones & pop-ups",
+        "Brand-new dining districts"
+      ],
+      "duration_hint": "1–2 days",
+      "best_season": "Seasonal (Oct–Mar)",
+      "cta_label": "Add to My Tour Plan",
+      "bundle_hint": "Perfect mid-trip energy boost"
+    },
+    {
+      "slug": "jeddah-waterfront",
+      "title": "Jeddah Waterfront",
+      "tagline": "Historic Al-Balad meets modern seaside skyline",
+      "hero_image": "/assets/experiences/jeddah-hero.jpg",
+      "gallery": [
+        "/assets/experiences/jeddah-1.jpg",
+        "/assets/experiences/jeddah-2.jpg",
+        "/assets/experiences/jeddah-3.jpg"
+      ],
+      "highlights": [
+        "UNESCO Al-Balad walking tour",
+        "Corniche sunset",
+        "Seafood & souk shopping"
+      ],
+      "duration_hint": "1–2 days",
+      "best_season": "Year-round",
+      "cta_label": "Add to My Tour Plan",
+      "bundle_hint": "Smooth add-on to Umrah in Makkah/Madinah"
+    },
+    {
+      "slug": "desert-safari",
+      "title": "Desert Safari & Camel Trek",
+      "tagline": "Dune bashing, camel rides & stargazing nights",
+      "hero_image": "/assets/experiences/desert-safari-hero.jpg",
+      "gallery": [
+        "/assets/experiences/desert-1.jpg",
+        "/assets/experiences/desert-2.jpg"
+      ],
+      "highlights": [
+        "4x4 dune adventure",
+        "Camel trek & Bedouin camp",
+        "Traditional dinner under stars"
+      ],
+      "duration_hint": "Half-day to overnight",
+      "best_season": "Oct–Apr",
+      "cta_label": "Add to My Tour Plan",
+      "bundle_hint": "Family-friendly, adventure lovers' favorite"
+    }
+  ],
+  "packages": [
+    {
+      "slug": "silver-umrah-plus",
+      "name": "Silver Umrah Plus",
+      "tier": "Silver",
+      "price_hint": "৳1.3–1.5 লক্ষ (pp)",
+      "duration": "5D/4N",
+      "hero_image": "/assets/packages/silver.jpg",
+      "inclusions": [
+        "Umrah visa processing",
+        "3★ hotel (shared room)",
+        "Airport transfers",
+        "Group Ziyarah tour"
+      ],
+      "exclusions": [
+        "Meals (add-on available)",
+        "Personal expenses",
+        "Travel insurance (optional)"
+      ],
+      "add_ons": ["Riyadh Day Tour", "Jeddah Waterfront Evening", "Desert Safari"],
+      "itinerary": [
+        "Day 1: Arrival, hotel check-in",
+        "Day 2: Umrah rituals & rest",
+        "Day 3: Ziyarah tour",
+        "Day 4: Free day / Optional Riyadh tour",
+        "Day 5: Departure"
+      ],
+      "cta_whatsapp": "https://wa.me/8801521217439?text=I'm%20interested%20in%20Silver%20Umrah%20Plus",
+      "cta_label": "Book via WhatsApp"
+    },
+    {
+      "slug": "gold-umrah-discover",
+      "name": "Gold Umrah Discover",
+      "tier": "Gold",
+      "price_hint": "৳2.0–2.5 লক্ষ (pp)",
+      "duration": "7D/6N",
+      "hero_image": "/assets/packages/gold.jpg",
+      "inclusions": [
+        "Umrah visa",
+        "4★ hotel near Haram",
+        "Daily breakfast",
+        "Private airport transfers",
+        "Guided Ziyarah + Riyadh City Tour"
+      ],
+      "exclusions": ["Lunch & dinner", "Personal shopping"],
+      "add_ons": ["Al-Ula Wonders (2D)", "Red Sea Day Trip"],
+      "itinerary": [
+        "Day 1–2: Arrival, Umrah & Ziyarah",
+        "Day 3: Riyadh City Tour",
+        "Day 4–5: Optional Al-Ula experience",
+        "Day 6: Jeddah Waterfront",
+        "Day 7: Departure"
+      ],
+      "cta_whatsapp": "https://wa.me/8801521217439?text=I'm%20interested%20in%20Gold%20Umrah%20Discover",
+      "cta_label": "Book via WhatsApp"
+    },
+    {
+      "slug": "platinum-umrah-signature",
+      "name": "Platinum Umrah Signature",
+      "tier": "Platinum",
+      "price_hint": "৳3.5–6.0 লক্ষ (pp)",
+      "duration": "8D/7N",
+      "hero_image": "/assets/packages/platinum.jpg",
+      "inclusions": [
+        "Umrah visa & concierge",
+        "5★ hotel (near Haram)",
+        "VIP transport",
+        "Private guide (Mutawwif)",
+        "Premium sightseeing bundle (Riyadh + Jeddah + Red Sea)"
+      ],
+      "exclusions": ["Personal expenses"],
+      "add_ons": ["Private Al-Ula retreat", "Heli-sightseeing (availability-based)"],
+      "itinerary": [
+        "Day 1–2: Arrival & VIP Umrah",
+        "Day 3: Riyadh Season Experiences",
+        "Day 4–5: Al-Ula premium retreat",
+        "Day 6: Red Sea leisure & spa",
+        "Day 7: Jeddah culture & fine dining",
+        "Day 8: Departure"
+      ],
+      "cta_whatsapp": "https://wa.me/8801521217439?text=I'm%20interested%20in%20Platinum%20Umrah%20Signature",
+      "cta_label": "Concierge Booking"
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Ayesha & Family",
+      "photo": "/assets/testimonials/ayesha.jpg",
+      "quote": "Umrah শেষে Al-Ula–তে ৩ দিন—এস্পানোভা সবকিছু এত সুন্দরভাবে সাজিয়ে দিয়েছিল যে কোন ঝামেলা হয়নি।",
+      "location": "Dhaka → Makkah • Al-Ula"
+    },
+    {
+      "name": "Rahim",
+      "photo": "/assets/testimonials/rahim.jpg",
+      "quote": "রিয়াদ সিজন + জেদ্দা ওয়াটারফ্রন্ট—ট্রিপটা ছিলো স্মরণীয়। হোটেল আর পরিবহন সবকিছু নিখুঁত।",
+      "location": "Chattogram → Riyadh • Jeddah"
+    },
+    {
+      "name": "Khan Family",
+      "photo": "/assets/testimonials/khan.jpg",
+      "quote": "প্লাটিনাম সিগনেচার প্যাকেজ—প্রাইভেট গাইড, VIP ট্রান্সপোর্ট, প্রতিটা ডিটেইল এক্সিকিউটেড পারফেক্টলি।",
+      "location": "Sylhet → Makkah • Red Sea"
+    }
+  ],
+  "destinations": [
+    {
+      "slug": "riyadh",
+      "name": "Riyadh",
+      "hero_image": "/assets/destinations/riyadh-hero.jpg",
+      "blurb": "Modern capital, cultural festivals & Riyadh Season mega-events.",
+      "experiences": ["riyadh-season", "desert-safari"],
+      "map_coords": { "lat": 24.7136, "lng": 46.6753 }
+    },
+    {
+      "slug": "jeddah",
+      "name": "Jeddah",
+      "hero_image": "/assets/destinations/jeddah-hero.jpg",
+      "blurb": "Historic Al-Balad, waterfront skyline & coastal cuisine.",
+      "experiences": ["jeddah-waterfront", "red-sea-escape"],
+      "map_coords": { "lat": 21.4858, "lng": 39.1925 }
+    },
+    {
+      "slug": "al-ula",
+      "name": "Al-Ula",
+      "hero_image": "/assets/destinations/al-ula-hero.jpg",
+      "blurb": "UNESCO heritage wonder with luxury desert retreats.",
+      "experiences": ["al-ula-wonders"],
+      "map_coords": { "lat": 26.6167, "lng": 37.9167 }
+    },
+    {
+      "slug": "red-sea",
+      "name": "Red Sea",
+      "hero_image": "/assets/destinations/red-sea-hero.jpg",
+      "blurb": "Pristine beaches, island resorts & world-class diving.",
+      "experiences": ["red-sea-escape"],
+      "map_coords": { "lat": 24.0, "lng": 36.0 }
+    }
+  ]
+}

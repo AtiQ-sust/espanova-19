@@ -20,6 +20,11 @@
     /* Gold Accent */
     --accent: 41 85% 62%;             /* #F5B041 - Warm Gold */
     --accent-foreground: 0 0% 0%;     /* Black text on gold */
+    
+    /* Gold Variants */
+    --gold: 41 85% 62%;               /* #F5B041 - Main Gold */
+    --gold-light: 48 100% 67%;        /* #FFD700 - Light Gold */
+    --gold-foreground: 0 0% 0%;       /* Black text on gold */
 
     /* Neutral Palette */
     --background: 0 0% 100%;          /* #FFFFFF - Pure White */
