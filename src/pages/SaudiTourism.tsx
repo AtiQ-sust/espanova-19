@@ -1,19 +1,91 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { 
   MapPin, Calendar, Star, MessageCircle, ArrowRight, Camera, Mountain, 
   Waves, Play, CheckCircle, Clock, Users, Crown, ChevronRight,
-  Home, Plane, Hotel, Car, FileText, Phone
+  Home, Plane, Hotel, Car, FileText, Phone, X, Plus, ChevronLeft, 
+  Download, Send, Mail, User
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import saudiTourismData from '@/data/saudi-tourism.json';
 
 const { experiences, packages, testimonials, destinations } = saudiTourismData;
 
 const SaudiTourism = () => {
+  // Modal states
+  const [itineraryModal, setItineraryModal] = useState({ isOpen: false, package: null });
+  const [tourPlanModal, setTourPlanModal] = useState(false);
+  const [emailModal, setEmailModal] = useState(false);
+  const [tourPlan, setTourPlan] = useState([]);
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  
+  // Form states
+  const [emailForm, setEmailForm] = useState({ name: '', email: '' });
+
+  // YouTube video ref
+  const youtubeRef = useRef(null);
+
+  // Auto-advance testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Package itinerary content
+  const itineraryContent = {
+    'Silver': "A 5-day spiritual journey focusing on Umrah rituals. Includes 3-star hotel stays in Makkah and Madinah, group Ziyarah to key historical sites, and all ground transportation.",
+    'Gold': "Our popular 7-day package balances faith and exploration. Includes 4-star hotels near the Haram, private airport transfers, a comprehensive Ziyarah tour, and a guided one-day city tour of historical Jeddah.",
+    'Platinum': "The ultimate 8-day luxury experience. Includes 5-star hotel stays with Haram views, VIP airport services, a private Mutawwif for Umrah, and exclusive guided tours to both Riyadh and the ancient wonders of Al-Ula."
+  };
+
+  // Add to tour plan function
+  const addToTourPlan = (experience) => {
+    const existingIndex = tourPlan.findIndex(item => item.name === experience.name);
+    if (existingIndex === -1) {
+      setTourPlan([...tourPlan, experience]);
+    }
+    setTourPlanModal(true);
+  };
+
+  // Remove from tour plan
+  const removeFromTourPlan = (index) => {
+    setTourPlan(tourPlan.filter((_, i) => i !== index));
+  };
+
+  // Calculate totals
+  const totalPrice = tourPlan.reduce((sum, item) => sum + item.price, 0);
+  const totalDuration = tourPlan.reduce((sum, item) => sum + item.duration, 0);
+
+  // Handle email form submission
+  const handleEmailSubmit = (e) => {
+    e.preventDefault();
+    if (!emailForm.name || !emailForm.email) {
+      alert('Please fill in all fields');
+      return;
+    }
+    if (!emailForm.email.includes('@')) {
+      alert('Please enter a valid email address');
+      return;
+    }
+    alert('Thank you! The itinerary has been sent to your email.');
+    setEmailModal(false);
+    setEmailForm({ name: '', email: '' });
+  };
   const whyChooseFeatures = [
     {
       icon: <Home className="w-6 h-6" />,
@@ -69,18 +141,18 @@ const SaudiTourism = () => {
       <Header />
       
       <main>
-        {/* Hero Banner - Cinematic */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary/10 via-accent/5 to-muted/20">
-          {/* Background Video Placeholder */}
+        {/* Hero Banner - YouTube Video Background */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          {/* YouTube Video Background */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/60 via-primary/40 to-transparent z-10"></div>
-            <img 
-              src="/assets/saudi-tourism/hero-cinematic.jpg" 
-              alt="Saudi Arabia Tourism"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                e.currentTarget.src = 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1920&h=1080&fit=crop';
-              }}
+            <iframe
+              ref={youtubeRef}
+              className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+              src="https://www.youtube.com/embed/hwyyoXgI1W8?autoplay=1&mute=1&loop=1&playlist=hwyyoXgI1W8&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&disablekb=1&fs=0&cc_load_policy=0&playsinline=1&enablejsapi=1"
+              title="Saudi Arabia Tourism Background"
+              allow="autoplay; encrypted-media"
+              allowFullScreen={false}
             />
           </div>
 
@@ -216,9 +288,23 @@ const SaudiTourism = () => {
                     <p className="text-xs text-accent italic">{experience.bundle_hint}</p>
                   </div>
 
-                  <Button className="w-full btn-hero group-hover:btn-secondary transition-all">
-                    {experience.cta_label}
-                    <ChevronRight className="w-4 h-4 ml-2" />
+                  <Button 
+                    className="w-full btn-hero group-hover:btn-secondary transition-all"
+                    onClick={() => addToTourPlan({
+                      name: experience.title,
+                      price: experience.title.includes('Al-Ula') ? 450 : 
+                             experience.title.includes('Red Sea') ? 550 :
+                             experience.title.includes('Riyadh') ? 250 : 350,
+                      duration: experience.title.includes('Riyadh') ? 2 : 3
+                    })}
+                    data-name={experience.title}
+                    data-price={experience.title.includes('Al-Ula') ? "450" : 
+                               experience.title.includes('Red Sea') ? "550" :
+                               experience.title.includes('Riyadh') ? "250" : "350"}
+                    data-duration={experience.title.includes('Riyadh') ? "2" : "3"}
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add to My Tour Plan
                   </Button>
                 </div>
               ))}
@@ -304,7 +390,12 @@ const SaudiTourism = () => {
                         </Button>
                       </a>
                       
-                      <Button variant="outline" className="w-full" size="sm">
+                      <Button 
+                        variant="outline" 
+                        className="w-full" 
+                        size="sm"
+                        onClick={() => setItineraryModal({ isOpen: true, package: pkg.tier })}
+                      >
                         View Detailed Itinerary
                       </Button>
                     </div>
@@ -324,30 +415,46 @@ const SaudiTourism = () => {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {destinations.map((destination, index) => (
-                <div
-                  key={destination.slug}
-                  className="group cursor-pointer fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="relative overflow-hidden rounded-2xl">
-                    <img
-                      src={destination.hero_image}
-                      alt={destination.name}
-                      className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://images.unsplash.com/photo-${1600000000000 + index}?w=400&h=300&fit=crop`;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-                    <div className="absolute bottom-4 left-4 text-white">
-                      <h3 className="text-xl font-poppins font-bold mb-1">{destination.name}</h3>
-                      <p className="text-sm opacity-90">{destination.blurb}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+            <div className="relative max-w-6xl mx-auto">
+              <Carousel 
+                className="w-full"
+                opts={{
+                  align: "start",
+                  loop: true,
+                }}
+              >
+                <CarouselContent>
+                  {destinations.map((destination, index) => (
+                    <CarouselItem key={destination.slug} className="md:basis-1/2 lg:basis-1/3">
+                      <div className="p-1">
+                        <Card className="border-0 bg-transparent">
+                          <CardContent className="p-0">
+                            <div className="group cursor-pointer fade-in-up">
+                              <div className="relative overflow-hidden rounded-2xl">
+                                <img
+                                  src={destination.hero_image}
+                                  alt={destination.name}
+                                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                                  onError={(e) => {
+                                    e.currentTarget.src = `https://images.unsplash.com/photo-${1600000000000 + index}?w=400&h=300&fit=crop`;
+                                  }}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                                <div className="absolute bottom-4 left-4 text-white">
+                                  <h3 className="text-xl font-poppins font-bold mb-1">{destination.name}</h3>
+                                  <p className="text-sm opacity-90">{destination.blurb}</p>
+                                </div>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="hidden md:flex -left-12" />
+                <CarouselNext className="hidden md:flex -right-12" />
+              </Carousel>
             </div>
           </div>
         </section>
@@ -392,8 +499,12 @@ const SaudiTourism = () => {
               </div>
 
               <div className="text-center mt-12">
-                <Button className="btn-hero" size="lg">
-                  <FileText className="w-5 h-5 mr-2" />
+                <Button 
+                  className="btn-hero" 
+                  size="lg"
+                  onClick={() => setEmailModal(true)}
+                >
+                  <Download className="w-5 h-5 mr-2" />
                   Get Detailed Itinerary PDF
                 </Button>
               </div>
@@ -401,48 +512,113 @@ const SaudiTourism = () => {
           </div>
         </section>
 
-        {/* Customer Stories Carousel */}
+        {/* Video Testimonials Slider */}
         <section className="py-20 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-poppins font-bold gradient-text mb-6">
                 Customer Stories
               </h2>
+              <p className="text-lg text-muted-foreground">Real experiences from our valued customers</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={testimonial.name}
-                  className="bg-white rounded-2xl p-8 shadow-soft hover:shadow-medium transition-shadow fade-in-up"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+            <div className="relative max-w-6xl mx-auto">
+              <div className="overflow-hidden rounded-2xl bg-white shadow-soft">
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
                 >
-                  <div className="flex items-center mb-6">
-                    <img
-                      src={testimonial.photo}
-                      alt={testimonial.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://images.unsplash.com/photo-${1550000000000 + index}?w=100&h=100&fit=crop&crop=face`;
-                      }}
-                    />
-                    <div>
-                      <h4 className="font-poppins font-bold">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                  {testimonials.map((testimonial, index) => (
+                    <div key={testimonial.name} className="w-full flex-shrink-0">
+                      <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 min-h-[400px]">
+                        {/* Video Column - 60% */}
+                        <div className="lg:col-span-2 relative bg-black">
+                          <video
+                            className="w-full h-full object-cover"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          >
+                            <source src={`https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4`} type="video/mp4" />
+                            Your browser does not support the video tag.
+                          </video>
+                          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
+                        </div>
+
+                        {/* Content Column - 40% */}
+                        <div className="p-8 lg:p-12 flex flex-col justify-center">
+                          <div className="flex items-center mb-6">
+                            <img
+                              src={testimonial.photo}
+                              alt={testimonial.name}
+                              className="w-16 h-16 rounded-full object-cover mr-4"
+                              onError={(e) => {
+                                e.currentTarget.src = `https://images.unsplash.com/photo-${1550000000000 + index}?w=100&h=100&fit=crop&crop=face`;
+                              }}
+                            />
+                            <div>
+                              <h4 className="font-poppins font-bold text-lg">{testimonial.name}</h4>
+                              <p className="text-sm text-muted-foreground">Doctor • January 2025</p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center mb-4">
+                            {[...Array(5)].map((_, i) => (
+                              <Star key={i} className="w-5 h-5 fill-gold text-gold" />
+                            ))}
+                          </div>
+
+                          <blockquote className="text-muted-foreground italic leading-relaxed mb-6">
+                            "{testimonial.quote}"
+                          </blockquote>
+
+                          <div className="text-sm">
+                            <span className="font-semibold text-primary">Package:</span> Gold Umrah Discover
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-
-                  <blockquote className="text-muted-foreground italic leading-relaxed">
-                    "{testimonial.quote}"
-                  </blockquote>
-
-                  <div className="flex items-center mt-4">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-gold text-gold" />
-                    ))}
-                  </div>
+                  ))}
                 </div>
-              ))}
+              </div>
+
+              {/* Navigation Controls */}
+              <div className="flex items-center justify-center mt-8 space-x-4">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setCurrentTestimonial((prev) => 
+                    prev === 0 ? testimonials.length - 1 : prev - 1
+                  )}
+                  className="rounded-full"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </Button>
+
+                <div className="flex space-x-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-3 h-3 rounded-full transition-colors ${
+                        index === currentTestimonial ? 'bg-primary' : 'bg-muted'
+                      }`}
+                    />
+                  ))}
+                </div>
+
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setCurrentTestimonial((prev) => 
+                    (prev + 1) % testimonials.length
+                  )}
+                  className="rounded-full"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </section>
@@ -518,6 +694,162 @@ const SaudiTourism = () => {
           </div>
         </section>
       </main>
+
+      {/* Itinerary Modal */}
+      {itineraryModal.isOpen && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-poppins font-bold">
+                  {itineraryModal.package} Umrah Discover Itinerary
+                </h3>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setItineraryModal({ isOpen: false, package: null })}
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+              <div className="text-muted-foreground leading-relaxed mb-6">
+                {itineraryContent[itineraryModal.package]}
+              </div>
+              <Button
+                className="w-full btn-primary"
+                onClick={() => setItineraryModal({ isOpen: false, package: null })}
+              >
+                Close
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tour Plan Modal */}
+      {tourPlanModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-poppins font-bold">My Tour Plan</h3>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setTourPlanModal(false)}
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+
+              {tourPlan.length === 0 ? (
+                <p className="text-muted-foreground text-center py-8">
+                  Your tour plan is empty. Add experiences to get started!
+                </p>
+              ) : (
+                <>
+                  <div className="space-y-4 mb-6">
+                    {tourPlan.map((item, index) => (
+                      <div key={index} className="flex items-center justify-between p-4 bg-muted/30 rounded-lg">
+                        <div>
+                          <h4 className="font-semibold">{item.name}</h4>
+                          <p className="text-sm text-muted-foreground">
+                            {item.duration} days • ${item.price}
+                          </p>
+                        </div>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          onClick={() => removeFromTourPlan(index)}
+                        >
+                          <X className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="border-t pt-4 mb-6">
+                    <div className="flex justify-between text-lg font-semibold">
+                      <span>Total Duration: {totalDuration} days</span>
+                      <span>Estimated Total: ${totalPrice}</span>
+                    </div>
+                  </div>
+
+                  <a
+                    href={`https://wa.me/8801521217439?text=I%20want%20to%20book%20these%20experiences:%20${tourPlan.map(item => item.name).join(', ')}%20Total:%20$${totalPrice}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="w-full btn-hero">
+                      <MessageCircle className="w-4 h-4 mr-2" />
+                      Request Booking
+                    </Button>
+                  </a>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Email Form Modal */}
+      {emailModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full">
+            <div className="p-6">
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-2xl font-poppins font-bold">Download the Full Itinerary</h3>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() => setEmailModal(false)}
+                >
+                  <X className="w-4 h-4" />
+                </Button>
+              </div>
+
+              <form onSubmit={handleEmailSubmit} className="space-y-4">
+                <div>
+                  <Label htmlFor="name" className="text-sm font-medium">
+                    <User className="w-4 h-4 inline mr-2" />
+                    Name *
+                  </Label>
+                  <Input
+                    id="name"
+                    type="text"
+                    required
+                    value={emailForm.name}
+                    onChange={(e) => setEmailForm({ ...emailForm, name: e.target.value })}
+                    className="mt-1"
+                    placeholder="Enter your full name"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="email" className="text-sm font-medium">
+                    <Mail className="w-4 h-4 inline mr-2" />
+                    Email *
+                  </Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    required
+                    value={emailForm.email}
+                    onChange={(e) => setEmailForm({ ...emailForm, email: e.target.value })}
+                    className="mt-1"
+                    placeholder="Enter your email address"
+                  />
+                </div>
+
+                <Button type="submit" className="w-full btn-hero">
+                  <Send className="w-4 h-4 mr-2" />
+                  Send Me the PDF
+                </Button>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>
