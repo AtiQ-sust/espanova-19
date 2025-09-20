@@ -15,10 +15,10 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Custom ManpowerHub variants
-        hero: "bg-gradient-primary text-white rounded-xl font-semibold transition-all duration-300 hover:shadow-strong hover:-translate-y-0.5 hover:brightness-110",
-        gold: "bg-accent text-accent-foreground rounded-xl font-semibold transition-all duration-300 hover:shadow-glow-gold hover:-translate-y-0.5",
-        whatsapp: "bg-green-600 text-white hover:bg-green-700 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5",
+        // Custom Espanova variants using design system tokens
+        hero: "px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 text-white shadow-medium hover:shadow-strong hover:-translate-y-0.5 hover:brightness-110 bg-gradient-to-r from-primary via-primary-mid to-primary-light",
+        gold: "px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 bg-gold text-gold-foreground shadow-soft hover:shadow-glow-gold hover:-translate-y-0.5",
+        whatsapp: "px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 bg-green-600 text-white hover:bg-green-700 shadow-soft hover:shadow-lg hover:-translate-y-0.5",
       },
       size: {
         default: "h-10 px-4 py-2",

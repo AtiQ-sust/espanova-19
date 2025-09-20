@@ -103,14 +103,14 @@ const Header = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button className="btn-secondary">
+              <Button variant="gold">
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp
               </Button>
             </a>
             
             <Link to="/jobs">
-              <Button className="btn-hero">
+              <Button variant="hero">
                 Apply Now
               </Button>
             </Link>
@@ -158,19 +158,19 @@ const Header = () => {
             
             <div className="mt-4 pt-4 border-t border-gray-100 space-y-3">
               <a
-                href="https://wa.me/8801XXXXXXXXX"
+                href="https://wa.me/8801521217439"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
               >
-                <Button className="w-full btn-secondary">
+                <Button variant="gold" className="w-full">
                   <MessageCircle className="w-4 h-4 mr-2" />
                   WhatsApp
                 </Button>
               </a>
               
               <Link to="/jobs" className="block">
-                <Button className="w-full btn-hero">
+                <Button variant="hero" className="w-full">
                   Apply Now
                 </Button>
               </Link>

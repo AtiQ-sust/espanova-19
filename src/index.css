@@ -148,7 +148,7 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Hero Button Variants */
+  /* Hero Button Variants - Updated to work with Button component */
   .btn-hero {
     @apply px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300;
     background: var(--gradient-primary);
@@ -165,8 +165,8 @@
 
   .btn-secondary {
     @apply px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300;
-    background: hsl(var(--accent));
-    color: hsl(var(--accent-foreground));
+    background: hsl(var(--gold));
+    color: hsl(var(--gold-foreground));
     border: none;
     box-shadow: var(--shadow-soft);
   }
