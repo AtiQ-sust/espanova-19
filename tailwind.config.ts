@@ -33,6 +33,18 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        success: {
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
+        },
+        warning: {
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
+        },
+        danger: {
+          DEFAULT: "hsl(var(--danger))",
+          foreground: "hsl(var(--danger-foreground))",
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -45,11 +57,6 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          foreground: "hsl(var(--gold-foreground))",
-        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -57,6 +64,18 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        // Slate palette
+        slate: {
+          900: "hsl(var(--slate-900))",
+          800: "hsl(var(--slate-800))",
+          700: "hsl(var(--slate-700))",
+          600: "hsl(var(--slate-600))",
+          500: "hsl(var(--slate-500))",
+          400: "hsl(var(--slate-400))",
+          300: "hsl(var(--slate-300))",
+          200: "hsl(var(--slate-200))",
+          100: "hsl(var(--slate-100))",
         },
       },
       backgroundImage: {
@@ -69,7 +88,25 @@ export default {
         'medium': 'var(--shadow-medium)',
         'strong': 'var(--shadow-strong)',
         'glow-primary': 'var(--glow-primary)',
-        'glow-gold': 'var(--glow-gold)',
+      },
+      // Typography scale
+      fontSize: {
+        'xs': 'var(--text-xs)',
+        'sm': 'var(--text-sm)', 
+        'base': 'var(--text-base)',
+        'lg': 'var(--text-lg)',
+        'xl': 'var(--text-xl)',
+        '2xl': 'var(--text-2xl)',
+        '3xl': 'var(--text-3xl)',
+        '4xl': 'var(--text-4xl)',
+        '5xl': 'var(--text-5xl)',
+        '6xl': 'var(--text-6xl)',
+      },
+      // Container utilities
+      maxWidth: {
+        'container-xl': 'var(--container-xl)',
+        'container-lg': 'var(--container-lg)',
+        'container-md': 'var(--container-md)',
       },
       borderRadius: {
         lg: "var(--radius)",

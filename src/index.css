@@ -4,58 +4,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Overseas Manpower & Tourism Platform Design System
-   Inspired by Espanova gradient branding
-   Colors: Purple gradient → Gold accents → Clean neutrals
+/* Espanova Production Design System
+   Colors: Primary #0D6EFD, Neutrals slate-900..100, Success/Warning/Danger
 */
 
 @layer base {
   :root {
-    /* Core Brand Colors - HSL Format */
-    --primary: 276 47% 34%;           /* #5B2C98 - Deep Purple */
-    --primary-mid: 308 49% 41%;       /* #A23DB7 - Magenta */  
-    --primary-light: 334 72% 59%;     /* #E84393 - Pink */
+    /* Production Brand Colors - HSL Format */
+    --primary: 217 100% 54%;          /* #0D6EFD - Primary Blue */
+    --primary-mid: 217 100% 64%;      /* Lighter primary */  
+    --primary-light: 217 100% 74%;    /* Light primary */
     --primary-foreground: 0 0% 100%;  /* White text on primary */
 
-    /* Gold Accent */
-    --accent: 41 85% 62%;             /* #F5B041 - Warm Gold */
-    --accent-foreground: 0 0% 0%;     /* Black text on gold */
+    /* Semantic Colors */
+    --success: 142 71% 45%;           /* #16a34a - Success Green */
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;            /* #f59e0b - Warning Orange */
+    --warning-foreground: 0 0% 0%;
+    --danger: 0 84% 60%;              /* #ef4444 - Danger Red */
+    --danger-foreground: 0 0% 100%;
     
-    /* Gold Variants */
-    --gold: 41 85% 62%;               /* #F5B041 - Main Gold */
-    --gold-light: 48 100% 67%;        /* #FFD700 - Light Gold */
-    --gold-foreground: 0 0% 0%;       /* Black text on gold */
+    /* Neutral Slate Palette (900-100) */
+    --slate-900: 222 84% 5%;          /* #0f172a */
+    --slate-800: 215 28% 17%;         /* #1e293b */
+    --slate-700: 215 20% 25%;         /* #334155 */
+    --slate-600: 215 16% 47%;         /* #64748b */
+    --slate-500: 215 14% 59%;         /* #94a3b8 */
+    --slate-400: 215 20% 65%;         /* #cbd5e1 */
+    --slate-300: 215 25% 83%;         /* #e2e8f0 */
+    --slate-200: 215 23% 89%;         /* #f1f5f9 */
+    --slate-100: 210 40% 98%;         /* #f8fafc */
 
-    /* Neutral Palette */
-    --background: 0 0% 100%;          /* #FFFFFF - Pure White */
-    --foreground: 0 0% 17%;           /* #2C2C2C - Charcoal */
-    --muted: 0 0% 96%;                /* #F4F4F4 - Light Gray */
-    --muted-foreground: 0 0% 45%;     /* Gray text */
+    /* Base System Colors */
+    --background: 0 0% 100%;          /* #FFFFFF */
+    --foreground: 222 84% 5%;         /* slate-900 */
+    --muted: 210 40% 98%;             /* slate-100 */
+    --muted-foreground: 215 16% 47%;  /* slate-600 */
 
     /* UI Elements */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 17%;
+    --card-foreground: 222 84% 5%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 17%;
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 17%;
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 276 47% 34%;
-    --destructive: 0 84% 60%;
+    --popover-foreground: 222 84% 5%;
+    --secondary: 210 40% 98%;         /* slate-100 */
+    --secondary-foreground: 222 84% 5%;
+    --border: 215 23% 89%;            /* slate-200 */
+    --input: 215 23% 89%;             /* slate-200 */
+    --ring: 217 100% 54%;             /* primary */
+    --destructive: 0 84% 60%;         /* danger */
     --destructive-foreground: 0 0% 100%;
+    --accent: 217 100% 54%;           /* primary */
+    --accent-foreground: 0 0% 100%;
 
-    /* Corporate Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(276 47% 34%), hsl(308 49% 41%), hsl(334 72% 59%));
-    --gradient-hero: linear-gradient(135deg, hsl(276 47% 34% / 0.95), hsl(308 49% 41% / 0.9));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 98%));
+    /* Production Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 100% 54%), hsl(217 100% 64%));
+    --gradient-hero: linear-gradient(135deg, hsl(217 100% 54% / 0.95), hsl(217 100% 64% / 0.9));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(210 40% 98%));
+    
+    /* Container Widths */
+    --container-xl: 1200px;
+    --container-lg: 960px;
+    --container-md: 720px;
+    
+    /* Typography Scale */
+    --text-xs: 0.75rem;     /* 12px */
+    --text-sm: 0.875rem;    /* 14px */
+    --text-base: 1rem;      /* 16px */
+    --text-lg: 1.125rem;    /* 18px */
+    --text-xl: 1.25rem;     /* 20px */
+    --text-2xl: 1.5rem;     /* 24px */
+    --text-3xl: 1.875rem;   /* 30px */
+    --text-4xl: 2.25rem;    /* 36px */
+    --text-5xl: 3rem;       /* 48px */
+    --text-6xl: 3.75rem;    /* 60px */
     
     /* Shadows & Effects */
-    --shadow-soft: 0 2px 20px hsl(276 47% 34% / 0.08);
-    --shadow-medium: 0 8px 30px hsl(276 47% 34% / 0.12);
-    --shadow-strong: 0 20px 60px hsl(276 47% 34% / 0.15);
-    --glow-primary: 0 0 40px hsl(276 47% 34% / 0.3);
-    --glow-gold: 0 0 30px hsl(41 85% 62% / 0.4);
+    --shadow-soft: 0 2px 20px hsl(217 100% 54% / 0.08);
+    --shadow-medium: 0 8px 30px hsl(217 100% 54% / 0.12);
+    --shadow-strong: 0 20px 60px hsl(217 100% 54% / 0.15);
+    --glow-primary: 0 0 40px hsl(217 100% 54% / 0.3);
 
     /* Border Radius System */
     --radius: 0.75rem;
@@ -85,16 +112,17 @@
   }
 
   .dark {
-    /* Dark mode uses same brand colors but adjusted backgrounds */
-    --background: 0 0% 8%;            /* Dark charcoal */
-    --foreground: 0 0% 95%;           /* Light text */
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    /* Keep same brand gradients in dark mode */
+    /* Dark mode with slate palette */
+    --background: 222 84% 5%;         /* slate-900 */
+    --foreground: 210 40% 98%;        /* slate-100 */
+    --card: 215 28% 17%;              /* slate-800 */
+    --card-foreground: 210 40% 98%;   /* slate-100 */
+    --muted: 215 28% 17%;             /* slate-800 */
+    --muted-foreground: 215 20% 65%;  /* slate-400 */
+    --border: 215 20% 25%;            /* slate-700 */
+    --input: 215 20% 25%;             /* slate-700 */
+    --secondary: 215 28% 17%;         /* slate-800 */
+    --secondary-foreground: 210 40% 98%; /* slate-100 */
   }
 }
 
@@ -108,35 +136,33 @@
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  /* Typography Scale - Poppins for headings, Open Sans for body */
+  /* Production Typography Scale */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.1; /* Tight leading for headings */
   }
 
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-semibold;
-    line-height: 1.1;
+  h1 { font-size: var(--text-6xl); }   /* 60px */
+  h2 { font-size: var(--text-5xl); }   /* 48px */
+  h3 { font-size: var(--text-4xl); }   /* 36px */
+  h4 { font-size: var(--text-3xl); }   /* 30px */
+  h5 { font-size: var(--text-2xl); }   /* 24px */
+  h6 { font-size: var(--text-xl); }    /* 20px */
+
+  p, body {
+    font-size: var(--text-base);       /* 16px */
+    line-height: 1.6;                  /* Body line-height */
   }
 
-  h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-semibold;
-    line-height: 1.15;
-  }
+  .text-lg { font-size: var(--text-lg); }    /* 18px */
+  .text-sm { font-size: var(--text-sm); }    /* 14px */
+  .text-xs { font-size: var(--text-xs); }    /* 12px */
 
-  h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-medium;
-    line-height: 1.2;
-  }
-
-  p {
-    @apply text-base md:text-lg leading-relaxed;
-  }
-
-  small {
-    @apply text-sm leading-normal;
-  }
+  /* Container Utilities */
+  .container-xl { max-width: var(--container-xl); margin: 0 auto; padding: 0 1rem; }
+  .container-lg { max-width: var(--container-lg); margin: 0 auto; padding: 0 1rem; }
+  .container-md { max-width: var(--container-md); margin: 0 auto; padding: 0 1rem; }
 }
 
 @layer components {

@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '@/components/Header';
+import SiteHeader from '@/components/layout/SiteHeader';
 import Hero from '@/components/Hero';
 import ServiceCards from '@/components/ServiceCards';
 import CountryHighlights from '@/components/CountryHighlights';
@@ -9,12 +9,17 @@ import JobBoardPreview from '@/components/JobBoardPreview';
 import SuccessCarousel from '@/components/SuccessCarousel';
 import BlogTeasers from '@/components/BlogTeasers';
 import CTAStrip from '@/components/CTAStrip';
-import Footer from '@/components/Footer';
+import SiteFooter from '@/components/layout/SiteFooter';
+import SEO from '@/components/SEO';
 
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Header />
+      <SEO 
+        title="Espanova"
+        description="Your trusted partner for overseas employment, Hajj & Umrah, tourism, and comprehensive travel services. Connecting dreams with opportunities."
+      />
+      <SiteHeader />
       <main>
         <Hero />
         <ServiceCards />
@@ -26,7 +31,7 @@ const Index = () => {
         <BlogTeasers />
         <CTAStrip />
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };
