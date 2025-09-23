@@ -7,12 +7,33 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem", 
+        md: "2rem",
+        lg: "2.5rem",
+      },
       screens: {
-        "2xl": "1400px",
+        sm: "720px",   // 45rem
+        md: "960px",   // 60rem  
+        lg: "1200px",  // 75rem
+        xl: "1200px",  // Keep max at 1200px
+        "2xl": "1200px", // Keep max at 1200px
       },
     },
     extend: {
+      fontSize: {
+        xs: '12px',
+        sm: '14px',
+        base: '16px', 
+        lg: '18px',
+        xl: '20px',
+        '2xl': '24px',
+        '3xl': '30px',
+        '4xl': '36px',
+        '5xl': '48px',
+        '6xl': '60px',
+      },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
         'sans': ['Open Sans', 'sans-serif'],

@@ -108,35 +108,80 @@
     font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   }
 
-  /* Typography Scale - Poppins for headings, Open Sans for body */
+  /* Typography Scale - Production ready with precise sizes */
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
-    line-height: 1.2;
+    line-height: 1.25; /* tight leading for headings */
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-semibold;
+    font-size: 48px; /* 3rem */
     line-height: 1.1;
+  }
+  
+  @media (min-width: 768px) {
+    h1 { font-size: 60px; } /* 3.75rem */
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-semibold;
+    font-size: 36px; /* 2.25rem */
     line-height: 1.15;
+  }
+  
+  @media (min-width: 768px) {
+    h2 { font-size: 48px; } /* 3rem */
   }
 
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-medium;
+    font-size: 30px; /* 1.875rem */
     line-height: 1.2;
   }
+  
+  @media (min-width: 768px) {
+    h3 { font-size: 36px; } /* 2.25rem */
+  }
 
+  h4 {
+    font-size: 24px; /* 1.5rem */
+    line-height: 1.25;
+  }
+
+  h5 {
+    font-size: 20px; /* 1.25rem */
+    line-height: 1.25;
+  }
+
+  h6 {
+    font-size: 18px; /* 1.125rem */
+    line-height: 1.25;
+  }
+
+  /* Body typography with consistent line height */
   p {
-    @apply text-base md:text-lg leading-relaxed;
+    font-size: 16px; /* 1rem */
+    line-height: 1.6; /* relaxed line height for body text */
+  }
+  
+  @media (min-width: 768px) {
+    p { font-size: 18px; } /* 1.125rem */
   }
 
   small {
-    @apply text-sm leading-normal;
+    font-size: 14px; /* 0.875rem */
+    line-height: 1.5;
   }
+  
+  .text-xs { font-size: 12px; }
+  .text-sm { font-size: 14px; }
+  .text-base { font-size: 16px; }
+  .text-lg { font-size: 18px; }
+  .text-xl { font-size: 20px; }
+  .text-2xl { font-size: 24px; }
+  .text-3xl { font-size: 30px; }
+  .text-4xl { font-size: 36px; }
+  .text-5xl { font-size: 48px; }
+  .text-6xl { font-size: 60px; }
 }
 
 @layer components {

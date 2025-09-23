@@ -26,8 +26,9 @@ const Index = () => {
         <BlogTeasers />
         <CTAStrip />
       </main>
-      <Footer />
+      <SiteFooter />
     </div>
+  </>
   );
 };
 
